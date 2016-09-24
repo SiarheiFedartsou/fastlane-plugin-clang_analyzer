@@ -20,7 +20,7 @@ Runs Clang Static Analyzer(http://clang-analyzer.llvm.org/) and generates report
 
 ## Example
 
-Check out the [example `Fastfile`](example/fastlane/Fastfile) to see how to use this plugin. Try it by cloning the repo, running `fastlane install_plugins` and `bundle exec fastlane test`. Example of analyzer report can be found [here](example/fastlane/analyze_report).
+Check out the [example `Fastfile`](example/fastlane/Fastfile) to see how to use this plugin. Try it by cloning the repo, running `fastlane install_plugins` and `bundle exec fastlane test` in `./example` folder. Example of analyzer report can be found [here](example/fastlane/analyze_report).
 
 ## Actions
 
