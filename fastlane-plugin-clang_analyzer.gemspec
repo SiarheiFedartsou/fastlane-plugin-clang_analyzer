@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = %q{Sergei_Fedortsov@cedoni.com}
 
   spec.summary       = %q{Runs Clang Static Analyzer(http://clang-analyzer.llvm.org/) and generates report}
-  # spec.homepage      = "https://github.com/<GITHUB_USERNAME>/fastlane-plugin-clang_analyzer"
+ spec.homepage      = "https://github.com/SiarheiFedartsou/fastlane-plugin-clang_analyzer"
   spec.license       = "MIT"
 
   spec.files         = Dir["lib/**/*"] + %w(README.md LICENSE)

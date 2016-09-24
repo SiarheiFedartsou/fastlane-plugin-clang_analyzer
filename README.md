@@ -1,5 +1,6 @@
 # clang_analyzer plugin
 
+[![CI Status](http://img.shields.io/travis/SiarheiFedartsou/fastlane-plugin-clang_analyzer.svg?style=flat)](https://travis-ci.org/SiarheiFedartsou/fastlane-plugin-clang_analyzer)
 [![fastlane Plugin Badge](https://rawcdn.githack.com/fastlane/fastlane/master/fastlane/assets/plugin-badge.svg)](https://rubygems.org/gems/fastlane-plugin-clang_analyzer)
 
 ## Getting Started
@@ -10,17 +11,36 @@ This project is a [fastlane](https://github.com/fastlane/fastlane) plugin. To ge
 fastlane add_plugin clang_analyzer
 ```
 
+Also you need a standalone [Clang Static Analyzer](http://clang-analyzer.llvm.org/). Download it and unzip somewhere.
+By default plugin will look for analyzer at ~/analyze_tools. You can provide custom path using `analyzer_path` option of `clang_analyzer` action.
+
 ## About clang_analyzer
 
-Runs Clang Static Analyzer(http://clang-analyzer.llvm.org/) and generates report
-
-**Note to author:** Add a more detailed description about this plugin here. If your plugin contains multiple actions, make sure to mention them here.
+Runs Clang Static Analyzer(http://clang-analyzer.llvm.org/) and generates report.
 
 ## Example
 
-Check out the [example `Fastfile`](fastlane/Fastfile) to see how to use this plugin. Try it by cloning the repo, running `fastlane install_plugins` and `bundle exec fastlane test`. 
+Check out the [example `Fastfile`](example/fastlane/Fastfile) to see how to use this plugin. Try it by cloning the repo, running `fastlane install_plugins` and `bundle exec fastlane test`. Example of analyzer report can be found [here](example/fastlane/analyze_report).
 
-**Note to author:** Please set up a sample project to make it easy for users to explore what your plugin does. Provide everything that is necessary to try out the plugin in this project (including a sample Xcode/Android project if necessary)
+## Actions
+
+### clang_analyzer
+```ruby
+clang_analyzer(
+  analyzer_path: '~/analyze_tools/bin', # optional
+  workspace: 'Test.xcworkspace', # optional, cannot be used together with `project` option
+  project: 'Test.xcodeproj', # optional, cannot be used together with `workspace` option
+  configuration: 'Debug', # optional
+  sdk: 'iphonesimulator', # optional
+  arch: 'i386', # optional
+  report_output_path: './fastlane/analyze_report/', # optional
+  )
+```
+
+
+## Jenkins integration
+
+You can easily integrate this plugin to Jenkins using [Jenkins HTML Publisher Plugin](https://wiki.jenkins-ci.org/display/JENKINS/HTML+Publisher+Plugin). Just pass path to generated report to this plugin.
 
 ## Run tests for this plugin
 
@@ -30,7 +50,7 @@ To run both the tests, and code style validation, run
 rake
 ```
 
-To automatically fix many of the styling issues, use 
+To automatically fix many of the styling issues, use
 ```
 rubocop -a
 ```

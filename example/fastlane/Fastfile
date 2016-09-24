@@ -1,0 +1,9 @@
+fastlane_version '1.104.0'
+
+default_platform :ios
+
+platform :ios do
+  lane :test do
+    clang_analyzer
+  end
+end

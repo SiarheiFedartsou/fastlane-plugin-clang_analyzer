@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+<head>
+<title>/Users/sergeyfedortsov/AnalyzerTest/AnalyzerTest/AppDelegate.m</title>
+<style type="text/css">
+ body { color:#000000; background-color:#ffffff }
+ body { font-family:Helvetica, sans-serif; font-size:10pt }
+ h1 { font-size:14pt }
+ .code { border-collapse:collapse; width:100%; }
+ .code { font-family: "Monospace", monospace; font-size:10pt }
+ .code { line-height: 1.2em }
+ .comment { color: green; font-style: oblique }
+ .keyword { color: blue }
+ .string_literal { color: red }
+ .directive { color: darkmagenta }
+ .expansion { display: none; }
+ .macro:hover .expansion { display: block; border: 2px solid #FF0000; padding: 2px; background-color:#FFF0F0; font-weight: normal;   -webkit-border-radius:5px;  -webkit-box-shadow:1px 1px 7px #000; position: absolute; top: -1em; left:10em; z-index: 1 } 
+ .macro { color: darkmagenta; background-color:LemonChiffon; position: relative }
+ .num { width:2.5em; padding-right:2ex; background-color:#eeeeee }
+ .num { text-align:right; font-size:8pt }
+ .num { color:#444444 }
+ .line { padding-left: 1ex; border-left: 3px solid #ccc }
+ .line { white-space: pre }
+ .msg { -webkit-box-shadow:1px 1px 7px #000 }
+ .msg { -webkit-border-radius:5px }
+ .msg { font-family:Helvetica, sans-serif; font-size:8pt }
+ .msg { float:left }
+ .msg { padding:0.25em 1ex 0.25em 1ex }
+ .msg { margin-top:10px; margin-bottom:10px }
+ .msg { font-weight:bold }
+ .msg { max-width:60em; word-wrap: break-word; white-space: pre-wrap }
+ .msgT { padding:0x; spacing:0x }
+ .msgEvent { background-color:#fff8b4; color:#000000 }
+ .msgControl { background-color:#bbbbbb; color:#000000 }
+ .mrange { background-color:#dfddf3 }
+ .mrange { border-bottom:1px solid #6F9DBE }
+ .PathIndex { font-weight: bold; padding:0px 5px; margin-right:5px; }
+ .PathIndex { -webkit-border-radius:8px }
+ .PathIndexEvent { background-color:#bfba87 }
+ .PathIndexControl { background-color:#8c8c8c }
+ .PathNav a { text-decoration:none; font-size: larger }
+ .CodeInsertionHint { font-weight: bold; background-color: #10dd10 }
+ .CodeRemovalHint { background-color:#de1010 }
+ .CodeRemovalHint { border-bottom:1px solid #6F9DBE }
+ table.simpletable {
+   padding: 5px;
+   font-size:12pt;
+   margin:20px;
+   border-collapse: collapse; border-spacing: 0px;
+ }
+ td.rowname {
+   text-align:right; font-weight:bold; color:#444444;
+   padding-right:2ex; }
+</style>
+</head>
+<body>
+<!-- BUGDESC Division by zero -->
+
+<!-- BUGTYPE Division by zero -->
+
+<!-- BUGCATEGORY Logic error -->
+
+<!-- BUGFILE /Users/sergeyfedortsov/AnalyzerTest/AnalyzerTest/AppDelegate.m -->
+
+<!-- FILENAME AppDelegate.m -->
+
+<!-- FUNCTIONNAME application:didFinishLaunchingWithOptions: -->
+
+<!-- ISSUEHASHCONTENTOFLINEINCONTEXT a42ad4de32f1830b26e83a3ac2cf6e0b -->
+
+<!-- BUGLINE 24 -->
+
+<!-- BUGCOLUMN 24 -->
+
+<!-- BUGPATHLENGTH 2 -->
+
+<!-- BUGMETAEND -->
+<!-- REPORTHEADER -->
+<h3>Bug Summary</h3>
+<table class="simpletable">
+<tr><td class="rowname">File:</td><td>AppDelegate.m</td></tr>
+<tr><td class="rowname">Location:</td><td><a href="#EndPath">line 24, column 24</a></td></tr>
+<tr><td class="rowname">Description:</td><td>Division by zero</td></tr>
+</table>
+<!-- REPORTSUMMARYEXTRA -->
+<h3>Annotated Source Code</h3>
+<table class="code">
+<tr><td class="num" id="LN1">1</td><td class="line"><span class='comment'>//</span></td></tr>
+<tr><td class="num" id="LN2">2</td><td class="line"><span class='comment'>//  AppDelegate.m</span></td></tr>
+<tr><td class="num" id="LN3">3</td><td class="line"><span class='comment'>//  AnalyzerTest</span></td></tr>
+<tr><td class="num" id="LN4">4</td><td class="line"><span class='comment'>//</span></td></tr>
+<tr><td class="num" id="LN5">5</td><td class="line"><span class='comment'>//  Created by Sergey Fedortsov on 23.9.16.</span></td></tr>
+<tr><td class="num" id="LN6">6</td><td class="line"><span class='comment'>//  Copyright © 2016 Sergey Fedortsov. All rights reserved.</span></td></tr>
+<tr><td class="num" id="LN7">7</td><td class="line"><span class='comment'>//</span></td></tr>
+<tr><td class="num" id="LN8">8</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN9">9</td><td class="line"><span class='directive'>#import "AppDelegate.h"</span></td></tr>
+<tr><td class="num" id="LN10">10</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN11">11</td><td class="line">@interface AppDelegate ()</td></tr>
+<tr><td class="num" id="LN12">12</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN13">13</td><td class="line">@end</td></tr>
+<tr><td class="num" id="LN14">14</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN15">15</td><td class="line">@implementation AppDelegate</td></tr>
+<tr><td class="num" id="LN16">16</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN17">17</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN18">18</td><td class="line">- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {</td></tr>
+<tr><td class="num" id="LN19">19</td><td class="line">    <span class='keyword'>int</span> x = 0;</td></tr>
+<tr><td class="num" id="LN20">20</td><td class="line">    NSLog(@<span class='string_literal'>"xxx"</span>);</td></tr>
+<tr><td class="num" id="LN21">21</td><td class="line">    <span class='keyword'>if</span> (x == 0) {</td></tr>
+<tr><td class="num"></td><td class="line"><div id="Path1" class="msg msgControl" style="margin-left:5ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexControl">1</div></td><td>Taking true branch</td><td><div class="PathNav"><a href="#EndPath" title="Next event (2)">&#x2192;</a></div></td></tr></table></div></td></tr>
+<tr><td class="num" id="LN22">22</td><td class="line">        NSLog(@<span class='string_literal'>"yyy"</span>);</td></tr>
+<tr><td class="num" id="LN23">23</td><td class="line">    }</td></tr>
+<tr><td class="num" id="LN24">24</td><td class="line">    NSLog(@<span class='string_literal'>"zzz %u"</span>, <span class="mrange">1 / 0</span>);</td></tr>
+<tr><td class="num"></td><td class="line"><div id="EndPath" class="msg msgEvent" style="margin-left:24ex"><table class="msgT"><tr><td valign="top"><div class="PathIndex PathIndexEvent">2</div></td><td><div class="PathNav"><a href="#Path1" title="Previous event (1)">&#x2190;</a></div></td></td><td>Division by zero</td></tr></table></div></td></tr>
+<tr><td class="num" id="LN25">25</td><td class="line">    <span class='comment'>// Override point for customization after application launch.</span></td></tr>
+<tr><td class="num" id="LN26">26</td><td class="line">    <span class='keyword'>return</span> <span class='macro'>YES<span class='expansion'>__objc_yes</span></span>;</td></tr>
+<tr><td class="num" id="LN27">27</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN28">28</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN29">29</td><td class="line">- (<span class='keyword'>void</span>)applicationWillResignActive:(UIApplication *)application {</td></tr>
+<tr><td class="num" id="LN30">30</td><td class="line">    <span class='comment'>// Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.</span></td></tr>
+<tr><td class="num" id="LN31">31</td><td class="line">    <span class='comment'>// Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.</span></td></tr>
+<tr><td class="num" id="LN32">32</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN33">33</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN34">34</td><td class="line">- (<span class='keyword'>void</span>)applicationDidEnterBackground:(UIApplication *)application {</td></tr>
+<tr><td class="num" id="LN35">35</td><td class="line">    <span class='comment'>// Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.</span></td></tr>
+<tr><td class="num" id="LN36">36</td><td class="line">    <span class='comment'>// If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.</span></td></tr>
+<tr><td class="num" id="LN37">37</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN38">38</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN39">39</td><td class="line">- (<span class='keyword'>void</span>)applicationWillEnterForeground:(UIApplication *)application {</td></tr>
+<tr><td class="num" id="LN40">40</td><td class="line">    <span class='comment'>// Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.</span></td></tr>
+<tr><td class="num" id="LN41">41</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN42">42</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN43">43</td><td class="line">- (<span class='keyword'>void</span>)applicationDidBecomeActive:(UIApplication *)application {</td></tr>
+<tr><td class="num" id="LN44">44</td><td class="line">    <span class='comment'>// Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.</span></td></tr>
+<tr><td class="num" id="LN45">45</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN46">46</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN47">47</td><td class="line">- (<span class='keyword'>void</span>)applicationWillTerminate:(UIApplication *)application {</td></tr>
+<tr><td class="num" id="LN48">48</td><td class="line">    <span class='comment'>// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.</span></td></tr>
+<tr><td class="num" id="LN49">49</td><td class="line">}</td></tr>
+<tr><td class="num" id="LN50">50</td><td class="line"> </td></tr>
+<tr><td class="num" id="LN51">51</td><td class="line">@end</td></tr>
+</table></body></html>
