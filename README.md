@@ -11,8 +11,9 @@ This project is a [fastlane](https://github.com/fastlane/fastlane) plugin. To ge
 fastlane add_plugin clang_analyzer
 ```
 
-Also you need a standalone [Clang Static Analyzer](http://clang-analyzer.llvm.org/). Download it and unzip somewhere.
-By default plugin will look for analyzer at ~/analyze_tools. You can provide custom path using `analyzer_path` option of `clang_analyzer` action.
+Then you need to download standalone [Clang Static Analyzer](http://clang-analyzer.llvm.org/).
+By default plugin will look for analyzer at ~/analyze_tools.
+To run Clang Static Analyzer add `clang_analyzer` action call in one of lanes in your Fastfile.
 
 ## About clang_analyzer
 
