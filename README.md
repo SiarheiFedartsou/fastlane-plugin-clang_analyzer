@@ -34,7 +34,7 @@ clang_analyzer(
   configuration: 'Debug', # optional
   sdk: 'iphonesimulator', # optional
   arch: 'i386', # optional
-  report_output_path: './fastlane/analyze_report/', # optional
+  report_output_path: './fastlane/analyze_report/' # optional
   )
 ```
 
