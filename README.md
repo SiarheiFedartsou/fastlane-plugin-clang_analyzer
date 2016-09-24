@@ -17,7 +17,7 @@ To run Clang Static Analyzer add `clang_analyzer` action call in one of lanes in
 
 ## About clang_analyzer
 
-Runs Clang Static Analyzer(http://clang-analyzer.llvm.org/) and generates report.
+Runs [Clang Static Analyzer](http://clang-analyzer.llvm.org/) on your codebase and generates report.
 
 ## Example
 
