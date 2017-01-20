@@ -30,18 +30,25 @@ module Fastlane
         analyzer_params_string = analyzer_params.join(" ")
 
         begin
-          output = Actions.sh(File.join(params[:analyzer_path], "scan-build") + " xcodebuild #{analyzer_params_string} clean analyze")
-
           resulting_path = params[:report_output_path]
-          begin
-            FileUtils.rm_rf(resulting_path)
-          rescue
-            nil
-          end
+          FileUtils.rm_rf(resulting_path)
 
+          log_file_path = params[:log_file_path]
+          clean         = params[:clean] ? "clean" : ""
+          command       = File.join(params[:analyzer_path], "scan-build") + " xcodebuild #{analyzer_params_string} #{clean} analyze | tee #{log_file_path} | xcpretty"
+
+          FastlaneCore::CommandExecutor.execute(command: command,
+                                              print_all: true,
+                                          print_command: true,
+                                                  error: proc do |output|
+                                                    ErrorHandler.handle_build_error(output)
+                                                  end)
+
+          output  = File.read(log_file_path)
           matches = output.match(/scan-view (.*)\'/)
           if matches
             path = output.match(/scan-view (.*)\'/)[1]
+            FileUtils.mkdir_p(resulting_path)
             FileUtils.cp_r(path, resulting_path)
             UI.success "Successfully generated analyzer report at path #{File.expand_path(resulting_path)}"
           else
@@ -97,15 +104,23 @@ module Fastlane
                                   env_name: "CLANG_ANALYZER_ARCH",
                                   optional: true,
                                   default_value: "i386"),
+          FastlaneCore::ConfigItem.new(key: :clean,
+                                  env_name: "CLANG_ANALYZER_CLEAN",
+                                  optional: true,
+                                  default_value: true),
+          FastlaneCore::ConfigItem.new(key: :log_file_path,
+                                  env_name: "CLANG_ANALYZER_LOG_FILE_PATH",
+                                  optional: true,
+                                  default_value: "clang-analyzer.log"),
           FastlaneCore::ConfigItem.new(key: :report_output_path,
                                   env_name: "CLANG_ANALYZER_REPORT_OUTPUT_PATH",
                                   optional: true,
-                                  default_value: "./fastlane/analyze_report/")
+                                  default_value: "analyzer_report")
 
         ]
       end
 
-      def self.is_supported?(platform)
+      def self.is_supported?(_platform)
         # Adjust this if your plugin only works for a particular platform (iOS vs. Android, for example)
         # See: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Platforms.md
         #
