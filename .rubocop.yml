@@ -49,6 +49,10 @@ Style/SpecialGlobalVars:
 Metrics/AbcSize:
   Enabled: false
 
+Metrics/BlockLength:
+  Exclude:
+    - "**/*_spec.rb"
+
 Metrics/MethodLength:
   Enabled: false
 
