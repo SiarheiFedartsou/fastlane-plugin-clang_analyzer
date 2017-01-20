@@ -9,10 +9,14 @@ describe Fastlane::Actions::ClangAnalyzerAction do
         " -sdk iphonesimulator" \
         " -arch i386" \
         " clean" \
-        " analyze"
+        " analyze" \
+        " | tee /log_file_path" \
+        " | xcpretty"
 
       fake_output = File.read('./spec/fixtures/scan-build_output_fixture')
-      expect(Fastlane::Actions).to receive(:sh).with(expected_command).and_return(fake_output)
+      expect(FastlaneCore::CommandExecutor).to receive(:execute).with(hash_including(command: expected_command))
+      expect(File).to receive(:read).with('/log_file_path').and_return(fake_output)
+      allow(FileUtils).to receive(:mkdir_p) {}
       expect(FileUtils).to receive(:rm_rf).with('/report_output_path')
       expect(FileUtils).to receive(:cp_r).with('/var/folders/fake_report_path', '/report_output_path')
 
@@ -21,6 +25,7 @@ describe Fastlane::Actions::ClangAnalyzerAction do
               scheme: 'TestScheme',
               analyzer_path: '/analyzer/bin',
               configuration: 'Debug',
+              log_file_path: '/log_file_path',
               report_output_path: '/report_output_path')
       end").runner.execute(:test)
     end
@@ -34,10 +39,14 @@ describe Fastlane::Actions::ClangAnalyzerAction do
         " -sdk iphonesimulator" \
         " -arch i386" \
         " clean" \
-        " analyze"
+        " analyze" \
+        " | tee /log_file_path" \
+        " | xcpretty"
 
       fake_output = File.read('./spec/fixtures/scan-build_output_fixture_no_bugs')
-      expect(Fastlane::Actions).to receive(:sh).with(expected_command).and_return(fake_output)
+      expect(FastlaneCore::CommandExecutor).to receive(:execute).with(hash_including(command: expected_command))
+      expect(File).to receive(:read).with('/log_file_path').and_return(fake_output)
+      allow(FileUtils).to receive(:mkdir_p) {}
       expect(FileUtils).to receive(:rm_rf).with('/report_output_path')
       expect(FileUtils).not_to receive(:cp_r)
 
@@ -46,6 +55,7 @@ describe Fastlane::Actions::ClangAnalyzerAction do
               scheme: 'TestScheme',
               analyzer_path: '/analyzer/bin',
               configuration: 'Debug',
+              log_file_path: '/log_file_path',
               report_output_path: '/report_output_path')
       end").runner.execute(:test)
     end
