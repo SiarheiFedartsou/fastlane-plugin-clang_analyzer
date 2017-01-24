@@ -29,13 +29,15 @@ Check out the [example `Fastfile`](example/fastlane/Fastfile) to see how to use 
 ```ruby
 clang_analyzer(
   analyzer_path: '~/analyze_tools/bin', # optional
+  clean: true, # optional
   workspace: 'Test.xcworkspace', # optional, cannot be used together with `project` option
   project: 'Test.xcodeproj', # optional, cannot be used together with `workspace` option
   configuration: 'Debug', # optional
   sdk: 'iphonesimulator', # optional
   arch: 'i386', # optional
-  report_output_path: './fastlane/analyze_report/' # optional
-  )
+  report_output_path: 'analyzer_report', # optional
+  log_file_path: 'analyzer_report.log', # optional
+)
 ```
 
 
